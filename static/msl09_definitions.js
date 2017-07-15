@@ -1,6 +1,7 @@
 'use strict';
 
-Blockly.defineBlocksWithJsonArray([{
+Blockly.defineBlocksWithJsonArray(
+[{
   "type": "meta_call",
   "message0": "call function %1 name %2 arguments %3",
   "args0": [
@@ -64,7 +65,10 @@ Blockly.defineBlocksWithJsonArray([{
       "align": "RIGHT"
     }
   ],
+  "previousStatement": null,
+  "nextStatement": null,
   "colour": 45,
   "tooltip": "programatically set a value",
   "helpUrl": ""
-}]);
+}]
+    );
