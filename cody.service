@@ -1,0 +1,11 @@
+[Unit]
+Description=cody
+Requires=network.target
+After=network.target
+
+[Service]
+User=www-data
+ExecStart=/usr/local/cody/start-storage.sh
+
+[Install]
+WantedBy=multi-user.target
