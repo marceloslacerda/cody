@@ -70,5 +70,28 @@ Blockly.defineBlocksWithJsonArray(
   "colour": 45,
   "tooltip": "programatically set a value",
   "helpUrl": ""
+},
+{
+  "type": "code_block",
+  "message0": "Code block %1 non returning %2 value returning %3",
+  "args0": [
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_statement",
+      "name": "STATEMENT1",
+      "align": "RIGHT"
+    },
+    {
+      "type": "input_value",
+      "name": "STATEMENT2"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 45,
+  "tooltip": "",
+  "helpUrl": ""
 }]
     );

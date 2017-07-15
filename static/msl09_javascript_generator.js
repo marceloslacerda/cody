@@ -25,3 +25,13 @@ Blockly.JavaScript['meta_set'] = function(block) {
   var code = 'var ' + stripQuotes(value_name) + ' = ' + value_value + ';\n';
   return code;
 };
+
+Blockly.JavaScript['code_block'] = function(block) {
+  var statements_statement1 = Blockly.JavaScript.statementToCode(block, 'STATEMENT1');
+  var value_statement2 = Blockly.JavaScript.valueToCode(block, 'STATEMENT2', Blockly.JavaScript.ORDER_ATOMIC);
+    // TODO: Assemble JavaScript into code variable.
+  var code = '';
+  if(statements_statement1) code += statements_statement1;
+  if(value_statement2) code += value_statement2.replace(/^\(|\)$/g, '');
+  return code;
+};
