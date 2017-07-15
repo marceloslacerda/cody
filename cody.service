@@ -5,7 +5,13 @@ After=network.target
 
 [Service]
 User=www-data
+WorkingDirectory=/usr/local/cody/
 ExecStart=/usr/local/cody/start-storage.sh
+RuntimeDirectory=uwsgi
+KillSignal=SIGQUIT
+Type=notify
+StandardError=syslog
+NotifyAccess=all
 
 [Install]
 WantedBy=multi-user.target
