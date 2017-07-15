@@ -9,7 +9,7 @@ cp -r $CURRENT_DIR $INSTALL_DIR
 mkdir -p $CODE_DIR
 chgrp -R www-data $CODE_DIR
 chmod -R g+rw $CODE_DIR
-rm /var/www/html/cody
+rm -f /var/www/html/cody
 ln -s $INSTALL_DIR/static/ /var/www/html/cody
 cp cody.service /etc/systemd/system/
 
