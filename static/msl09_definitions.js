@@ -93,5 +93,21 @@ Blockly.defineBlocksWithJsonArray(
   "colour": 45,
   "tooltip": "",
   "helpUrl": ""
+},
+{
+  "type": "simple_value",
+  "message0": "get value%1",
+  "args0": [
+    {
+      "type": "field_input",
+      "name": "NAME",
+      "text": ""
+    }
+  ],
+  "inputsInline": true,
+  "output": null,
+  "colour": 45,
+  "tooltip": "Get value by text",
+  "helpUrl": ""
 }]
     );

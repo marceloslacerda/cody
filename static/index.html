@@ -421,10 +421,31 @@
   </category>
   <sep></sep>
   <category name="Meta" colour="#93a55b">
-    <block type="meta_call"></block>
-    <block type="meta_value"></block>
-    <block type="meta_set"></block>
+    <block type="meta_call">
+      <value name="F_NAME">
+        <shadow type="text">
+          <field name="TEXT">f</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="meta_value">
+      <value name="NAME">
+        <shadow type="text">
+          <field name="TEXT">x</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="meta_set">
+      <value name="NAME">
+        <shadow type="text">
+          <field name="TEXT">x</field>
+        </shadow>
+      </value>
+    </block>
     <block type="code_block"></block>
+    <block type="simple_value">
+      <field name="NAME">x</field>
+    </block>
   </category>
   <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
   <category name="Functions" colour="#9A5CA6" custom="PROCEDURE"></category>

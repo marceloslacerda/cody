@@ -35,3 +35,9 @@ Blockly.JavaScript['code_block'] = function(block) {
   if(value_statement2) code += value_statement2.replace(/^\(|\)$/g, '');
   return code;
 };
+
+Blockly.JavaScript['simple_value'] = function(block) {
+  var text_name = block.getFieldValue('NAME');
+  var code = stripQuotes(text_name);
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
