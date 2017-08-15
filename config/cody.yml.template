@@ -1,0 +1,70 @@
+---
+- hosts: [[YOUR HOST]]
+  vars:
+    install_dir: /usr/local/cody/
+    code_dir: "{{ install_dir }}/code/"
+  remote_user: root
+  tasks:
+    - name: install dependencies
+      apt:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+         - nginx
+         - uwsgi
+         - uwsgi-plugin-python3
+         - python3-flask
+      notify: restart uwsgi
+
+    - name: copy cody to server
+      synchronize:
+        src: ..
+        dest: "{{ install_dir }}"
+        recursive: yes
+        archive: no
+        times: yes
+        rsync_opts: --exclude=config/
+      notify: restart server
+    - name: make code dir
+      file:
+        path: "{{ code_dir }}"
+        group: www-data
+        recurse: yes
+        mode: "u+rwx"
+      notify: restart server
+# I still haven't figured how to add an app
+# mapping to yml without changing the main
+# configuration
+#    - name: map nginx
+#      template:
+#        src: cody_mapping.j2
+#        dest: /etc/nginx/sites-available/cody_mapping
+#      notify: reload nginx
+    - name: install service file
+      copy:
+        src: cody.service
+        dest: /etc/systemd/system/
+      notify: reload systemd
+    - name: start and enable nginx
+      systemd:
+        name: nginx
+        state: started
+        enabled: yes
+    - name: start and enable uwsgi
+      systemd:
+        name: cody
+        state: started
+        enabled: yes
+  handlers:
+    - name: reload systemd
+      systemd:
+        name: cody
+        daemon_reload: yes
+    - name: restart server
+      service:
+        name: cody
+        state: restarted
+    - name: reload nginx
+      service:
+        name: nginx
+        state: restarted

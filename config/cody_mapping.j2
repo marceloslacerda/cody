@@ -1,0 +1,12 @@
+server {
+    location /cody/ {
+        alias {{ install_dir }}/static/;
+	autoindex on;
+    }
+    location = /storage { rewrite ^ /storage/; }
+    location /storage { try_files $uri @storage; }
+    location @storage {
+         include uwsgi_params;
+         uwsgi_pass unix:/tmp/storage.sock;
+    }
+}
